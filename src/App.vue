@@ -1,25 +1,29 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="openpaas">
+    <v-navigation-drawer clipped fixed app>
+      <!--<op-sidebar/>-->
+    </v-navigation-drawer>
+    <v-toolbar clipped-left app fixed color="primary">
+      <v-toolbar-side-icon></v-toolbar-side-icon>
+      <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
+        <img class="hidden-sm-and-down" id="header-logo" src="@/assets/logo.svg"/>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <!--<op-applications-menu/>-->
+      <!--<op-user-menu/>-->
+    </v-toolbar>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout justify-center align-center>
+          <router-view/>
+        </v-layout>
+      </v-container>
+    </v-content>
+    <snackbar/>
+  </v-app>
 </template>
 <style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-
-#nav
-  padding 30px
-  a
-    font-weight bold
-    color #2c3e50
-    &.router-link-exact-active
-      color #42b983
+  #header-logo
+    height: 35px;
+    width: 150px;
 </style>

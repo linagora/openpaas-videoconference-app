@@ -5,10 +5,11 @@ import store from "./store/index";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import Vuetify from "vuetify";
+import theme from "./theme";
 import "./main.styl";
 
 Vue.use(VueAxios, axios);
-Vue.use(Vuetify);
+Vue.use(Vuetify, { theme });
 
 Vue.config.productionTip = false;
 
