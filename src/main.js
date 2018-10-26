@@ -4,8 +4,11 @@ import router from "./router";
 import store from "./store";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Vuetify from "vuetify";
+import "./main.styl";
 
 Vue.use(VueAxios, axios);
+Vue.use(Vuetify);
 
 Vue.config.productionTip = false;
 
