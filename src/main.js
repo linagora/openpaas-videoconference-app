@@ -9,6 +9,8 @@ import theme from "./theme";
 import "./main.styl";
 
 Vue.use(VueAxios, axios);
+axios.defaults.baseURL = store.state.baseUrl;
+
 Vue.use(Vuetify, { theme });
 
 Vue.config.productionTip = false;
