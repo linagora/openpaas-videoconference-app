@@ -1,3 +1,3 @@
-export default () => {
-  //sample: 0
-};
+export default () => ({
+  baseUrl: "http://localhost:8080"
+});

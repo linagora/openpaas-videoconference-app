@@ -5,11 +5,13 @@ import getters from "./getters";
 import mutations from "./mutations";
 import state from "./state";
 import plugins from "./plugins";
-
+import user from "./modules/user";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  modules: {},
+  modules: {
+    user
+  },
   actions,
   getters,
   mutations,
