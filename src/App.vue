@@ -10,7 +10,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <!--<op-applications-menu/>-->
-      <!--<op-user-menu/>-->
+      <op-user-menu/>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
@@ -19,9 +19,21 @@
         </v-layout>
       </v-container>
     </v-content>
-    <snackbar/>
+    <!--<snackbar/>-->
   </v-app>
 </template>
+
+<script>
+import UserMenu from "@/components/UserMenu.vue";
+
+export default {
+  components: {
+    'op-user-menu': UserMenu
+  }
+};
+</script>
+
+
 <style lang="stylus">
   #header-logo
     height: 35px;
