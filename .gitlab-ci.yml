@@ -1,0 +1,15 @@
+image: node:10
+
+stages:
+  - test
+
+test:
+  stage: test
+  except:
+    - triggers
+  tags:
+    - docker
+  image: node:10
+  script:
+   - npm install
+   - npm run test:unit
