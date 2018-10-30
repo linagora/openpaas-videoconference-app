@@ -20,20 +20,22 @@
           </v-layout>
         </v-container>
       </v-content>
-      <!--<snackbar/>-->
     </div>
     <div v-else>
       <v-progress-circular indeterminate :size="50" color="primary"></v-progress-circular>
     </div>
+    <op-snackbar/>
   </v-app>
 </template>
 
 <script>
 import UserMenu from "@/components/UserMenu.vue";
+import Snackbar from "@/components/Snackbar.vue";
 
 export default {
   components: {
-    'op-user-menu': UserMenu
+    'op-user-menu': UserMenu,
+    'op-snackbar': Snackbar
   },
   created () {
     this.$auth.ready(() => {

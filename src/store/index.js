@@ -6,12 +6,14 @@ import mutations from "./mutations";
 import state from "./state";
 import plugins from "./plugins";
 import session from "./modules/session";
+import ui from "./modules/ui";
 import user from "./modules/user";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
     session,
+    ui,
     user
   },
   actions,
