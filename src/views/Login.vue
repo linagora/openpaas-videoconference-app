@@ -57,7 +57,7 @@ export default {
         return response.data;
       })
       .catch(err => {
-        // TODO: display error
+        this.$store.dispatch('ui/displaySnackbar', { message: 'Login error, please retry' });
       })
       .finally(() => {
         setTimeout(() => (this.logMeIn = false), 300);
