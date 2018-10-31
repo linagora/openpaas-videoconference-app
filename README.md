@@ -1,4 +1,4 @@
-# vue-openpaas-seed
+# openpaas-videoconference-app
 
 ## Project setup
 ```
