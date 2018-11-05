@@ -10,7 +10,7 @@ import theme from "./theme";
 import "./main.styl";
 
 Vue.use(VueAxios, axios);
-axios.defaults.baseURL = store.state.baseUrl;
+axios.defaults.baseURL = store.state.applicationConfiguration.baseUrl;
 Vue.router = router;
 
 Vue.use(require("@websanova/vue-auth"), services.auth);
