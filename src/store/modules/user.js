@@ -27,7 +27,7 @@ const getters = {
     return (
       state.user &&
       state.user._id &&
-      `${rootState.baseUrl}/api/users/${state.user._id}/profile/avatar`
+      `${rootState.applicationConfiguration.baseUrl}/api/users/${state.user._id}/profile/avatar`
     );
   },
 

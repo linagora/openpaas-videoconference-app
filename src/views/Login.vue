@@ -28,40 +28,41 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   data() {
     return {
       logMeIn: false,
       email: null,
-      password: null,
+      password: null
     };
   },
   methods: {
     login() {
       this.logMeIn = true;
-      this.$auth.login({
-        url: 'api/jwt/generate',
-        auth: {
-          username: this.email,
-          password: this.password
-        },
-        rememberMe: false,
-        redirect: { name: 'home' }
-      })
-      .then(response => {
-        this.$store.dispatch('session/setJWTToken', response.data);
-        this.$store.dispatch('user/fetchUser');
+      this.$auth
+        .login({
+          url: "api/jwt/generate",
+          auth: {
+            username: this.email,
+            password: this.password
+          },
+          rememberMe: false,
+          redirect: { name: "home" }
+        })
+        .then(response => {
+          this.$store.dispatch("session/setJWTToken", response.data);
+          this.$store.dispatch("user/fetchUser");
 
-        return response.data;
-      })
-      .catch(err => {
-        this.$store.dispatch('ui/displaySnackbar', { message: 'Login error, please retry' });
-      })
-      .finally(() => {
-        setTimeout(() => (this.logMeIn = false), 300);
-      });
+          return response.data;
+        })
+        .catch(() => {
+          this.$store.dispatch("ui/displaySnackbar", {
+            message: "Login error, please retry"
+          });
+        })
+        .finally(() => {
+          setTimeout(() => (this.logMeIn = false), 300);
+        });
     }
   }
 };

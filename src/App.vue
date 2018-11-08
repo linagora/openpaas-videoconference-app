@@ -1,16 +1,12 @@
 <template>
   <v-app id="openpaas">
     <div v-if="$auth.ready()">
-      <v-navigation-drawer clipped fixed app>
-        <!--<op-sidebar/>-->
-      </v-navigation-drawer>
       <v-toolbar clipped-left app fixed color="primary" v-if="$auth.check()">
-        <v-toolbar-side-icon></v-toolbar-side-icon>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
           <img class="hidden-sm-and-down" id="header-logo" src="@/assets/logo.svg"/>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <!--<op-applications-menu/>-->
+        <op-applications-menu/>
         <op-user-menu/>
       </v-toolbar>
       <v-content>
@@ -31,17 +27,19 @@
 <script>
 import UserMenu from "@/components/UserMenu.vue";
 import Snackbar from "@/components/Snackbar.vue";
+import ApplicationsMenu from "@/components/ApplicationsMenu.vue";
 
 export default {
   components: {
-    'op-user-menu': UserMenu,
-    'op-snackbar': Snackbar
+    "op-user-menu": UserMenu,
+    "op-snackbar": Snackbar,
+    "op-applications-menu": ApplicationsMenu
   },
-  created () {
+  created() {
     this.$auth.ready(() => {
-      this.$store.dispatch('user/fetchUser');
+      this.$store.dispatch("user/fetchUser");
     });
-  },
+  }
 };
 </script>
 
