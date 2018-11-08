@@ -1,5 +1,12 @@
 import Vue from "vue";
 
+let userResolve;
+let userReject;
+const ready = new Promise((resolve, reject) => {
+  userResolve = resolve;
+  userReject = reject;
+});
+
 const state = {
   jwtToken: localStorage.getItem("default_auth_token")
 };
@@ -34,7 +41,9 @@ const mutations = {
   }
 };
 
-const getters = {};
+const getters = {
+  ready: () => ready
+};
 
 export default {
   namespaced: true,
@@ -43,3 +52,5 @@ export default {
   actions,
   mutations
 };
+
+export { userResolve, userReject };
