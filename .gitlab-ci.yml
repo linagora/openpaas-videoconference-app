@@ -2,6 +2,7 @@ image: node:10
 
 stages:
   - test
+  - deploy_dev
 
 test:
   stage: test
@@ -13,3 +14,26 @@ test:
   script:
    - npm install
    - npm run test:unit
+
+deploy_dev:
+  stage: deploy_dev
+  except:
+    - triggers
+  tags:
+    - dev.open-paas.org
+    - deployment
+  environment:
+    name: dev
+    url: https://dev.open-paas.org
+  only:
+    - master
+  script:
+    - cd /srv/${CI_PROJECT_NAME}
+    - nvm use
+    - git fetch --all
+    - git checkout ${CI_COMMIT_SHA}
+    - npm install
+    - npm update
+    - git checkout -- .
+    - npm run build
+    - sudo /etc/init.d/nginx restart
