@@ -1,4 +1,6 @@
 import Vue from "vue";
+import { configurationRecursiveSearch } from "@/lib/helpers";
+import { userResolve, userReject } from "@/store/modules/session";
 
 const state = {
   user: null
@@ -10,9 +12,13 @@ const types = {
 
 const actions = {
   fetchUser({ commit }) {
-    Vue.axios.get("api/user").then(response => {
-      commit(types.SET_USER, response.data);
-    });
+    Vue.axios
+      .get("api/user")
+      .then(response => {
+        commit(types.SET_USER, response.data);
+        userResolve();
+      })
+      .catch(error => userReject(error));
   }
 };
 
@@ -37,7 +43,11 @@ const getters = {
 
   getEmail(state) {
     return state.user && state.user.preferredEmail;
-  }
+  },
+
+  configurations: state => configurationKey => {
+    return state.user && configurationRecursiveSearch(state.user.configurations.modules, configurationKey);
+  },
 };
 
 export default {

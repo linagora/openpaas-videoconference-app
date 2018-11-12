@@ -28,8 +28,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("user", ["getDisplayName", "getAvatarUrl", "getEmail"]),
-    ...mapState("applicationConfiguration", ["jitsiUrl", "jitsiToolbarButtons", "jitsiDefaultConferenceRoom"]),
+    ...mapGetters("user", ["getDisplayName", "getAvatarUrl", "getEmail", "configurations"]),
+    ...mapGetters("session", { sessionReady: "ready" }),
+    ...mapState("applicationConfiguration", ["jitsiToolbarButtons", "jitsiDefaultConferenceRoom"]),
     conferenceid() {
       return this.$route.params.conferenceid || this.jitsiDefaultConferenceRoom;
     },
@@ -38,12 +39,24 @@ export default {
     }
   },
   methods: {
+    dispose() {
+      this.videoConference.dispose();
+      this.videoConference = null;
+      this.displayReopenRoomButton = true;
+      this.loaded = false;
+    },
+    async getJitsiUrl() {
+      const stripProtocol = urlString => urlString.replace(`${new URL(urlString).protocol}//`, "");
+      await this.sessionReady;
+      return stripProtocol(this.configurations("linagora.esn.videoconference:jitsiInstanceUrl"));
+    },
     async openConference() {
       const JitsiMeetExternalAPI = await getJitsiMeetExternalAPI();
+      const jitsiUrl = await this.getJitsiUrl();
       this.loaded = false;
       this.displayReopenRoomButton = false;
       this.roomName = this.conferenceid;
-      this.videoConference = new JitsiMeetExternalAPI(this.jitsiUrl, {
+      this.videoConference = new JitsiMeetExternalAPI(jitsiUrl, {
         roomName: this.roomName,
         parentNode: this.$refs.jitsivideo,
         configOverwrite: {
@@ -65,12 +78,6 @@ export default {
       });
 
       this.videoConference.on("readyToClose", this.dispose);
-    },
-    dispose() {
-      this.videoConference.dispose();
-      this.videoConference = null;
-      this.displayReopenRoomButton = true;
-      this.loaded = false;
     }
   },
   mounted() {
