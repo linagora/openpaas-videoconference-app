@@ -12,13 +12,6 @@
         </v-list-tile-content>
       </v-list-tile>
       <v-divider/>
-      <v-list-tile @click.prevent="profile">
-        <v-list-tile-title>Profile</v-list-tile-title>
-      </v-list-tile>
-      <v-divider/>
-      <v-list-tile @click.prevent="settings">
-        <v-list-tile-title>Settings</v-list-tile-title>
-      </v-list-tile>
       <v-list-tile @click.prevent="logout">
         <v-list-tile-title>Log out</v-list-tile-title>
       </v-list-tile>
@@ -36,12 +29,6 @@ export default {
       this.$store.dispatch('session/logout').then(() => {
         this.$router.push({name: 'Login'});
       });
-    },
-
-    profile() {
-    },
-
-    settings() {
     }
   },
   computed: {
