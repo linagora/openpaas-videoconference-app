@@ -36,4 +36,5 @@ deploy_dev:
     - npm update
     - git checkout -- .
     - npm run build
-    - sudo /etc/init.d/nginx restart
+    - rm -fr /srv/vue-apps/${CI_PROJECT_NAME}/*
+    - cp -fr /srv/${CI_PROJECT_NAME}/dist/* /srv/vue-apps/${CI_PROJECT_NAME}/
