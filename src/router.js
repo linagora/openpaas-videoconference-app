@@ -10,7 +10,10 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      redirect: { name: "VideoConference" },
+      redirect: {
+        name: "VideoConference",
+        params: { conferenceid: process.env.VUE_APP_JITSI_DEFAULT_CONFERENCE_ROOM }
+      },
       meta: {
         auth: true
       }
@@ -24,15 +27,10 @@ export default new Router({
       }
     },
     {
-      path: "/conference",
+      path: "/:conferenceid",
       name: "VideoConference",
       component: VideoConference,
-      children: [
-        {
-          path: ":conferenceid",
-          component: VideoConference
-        }
-      ],
+      props: route => ({ conferenceid: route.params.conferenceid }),
       meta: {
         auth: true
       }
