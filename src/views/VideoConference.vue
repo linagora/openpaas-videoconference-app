@@ -104,4 +104,10 @@ export default {
       width: 100%
       height: calc(100vh - 64px)
     }
+
+    @media only screen and (max-width: 959px) {
+      #jitsi {
+        height: calc(100vh - 48px)
+      }
+    }
 </style>
