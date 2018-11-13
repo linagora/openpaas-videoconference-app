@@ -5,7 +5,7 @@
         <v-flex xs12 sm8 md4>
           <v-card class="elevation-12">
             <v-toolbar color="primary">
-              <v-toolbar-title>OpenPaaS Login</v-toolbar-title>
+              <v-toolbar-title class="white--text">OpenPaaS Login</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
               <v-form>
