@@ -6,11 +6,10 @@
           <img class="hidden-sm-and-down" id="header-logo" src="@/assets/logo.svg"/>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <op-applications-menu/>
         <op-user-menu/>
       </v-toolbar>
       <v-content>
-        <v-container fluid fill-height>
+        <v-container fluid fill-height pa-0>
           <v-layout justify-center align-center>
             <router-view/>
           </v-layout>
@@ -27,13 +26,12 @@
 <script>
 import UserMenu from "@/components/UserMenu.vue";
 import Snackbar from "@/components/Snackbar.vue";
-import ApplicationsMenu from "@/components/ApplicationsMenu.vue";
+
 
 export default {
   components: {
     "op-user-menu": UserMenu,
-    "op-snackbar": Snackbar,
-    "op-applications-menu": ApplicationsMenu
+    "op-snackbar": Snackbar
   },
   created() {
     this.$auth.ready(() => {
@@ -47,4 +45,5 @@ export default {
   #header-logo
     height: 35px;
     width: 150px;
+
 </style>

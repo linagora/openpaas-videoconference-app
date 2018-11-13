@@ -95,13 +95,13 @@ export default {
 
 <style scoped lang="stylus">
     #video {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
     #jitsi {
-        width: 100%
-        height: calc(100vh - 64px - 24px)
+      width: 100%
+      height: calc(100vh - 64px)
     }
 </style>
