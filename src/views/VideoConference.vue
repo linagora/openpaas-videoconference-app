@@ -24,24 +24,24 @@ export default {
       videoConference: null,
       loaded: false,
       roomName: "",
-      displayReopenRoomButton: false
+      displayReopenRoomButton: false,
     };
   },
+  props: { conferenceid: String },
   computed: {
     ...mapGetters("user", ["getDisplayName", "getAvatarUrl", "getEmail", "configurations"]),
     ...mapGetters("session", { sessionReady: "ready" }),
-    ...mapState("applicationConfiguration", ["jitsiToolbarButtons", "jitsiDefaultConferenceRoom"]),
-    conferenceid() {
-      return this.$route.params.conferenceid || this.jitsiDefaultConferenceRoom;
-    },
+    ...mapState("applicationConfiguration", ["jitsiToolbarButtons"]),
     showLoader() {
       return !this.loaded && !this.displayReopenRoomButton;
     }
   },
   methods: {
     dispose() {
-      this.videoConference.dispose();
-      this.videoConference = null;
+      if (this.videoConference) {
+        this.videoConference.dispose();
+        this.videoConference = null;
+      }
       this.displayReopenRoomButton = true;
       this.loaded = false;
     },
@@ -55,9 +55,8 @@ export default {
       const jitsiUrl = await this.getJitsiUrl();
       this.loaded = false;
       this.displayReopenRoomButton = false;
-      this.roomName = this.conferenceid;
       this.videoConference = new JitsiMeetExternalAPI(jitsiUrl, {
-        roomName: this.roomName,
+        roomName: this.conferenceid,
         parentNode: this.$refs.jitsivideo,
         configOverwrite: {
           enableClosePage: false
