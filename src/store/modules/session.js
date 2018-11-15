@@ -1,18 +1,17 @@
 import Vue from "vue";
 
-let userResolve;
-let userReject;
-const ready = new Promise((resolve, reject) => {
-  userResolve = resolve;
-  userReject = reject;
-});
-
 const state = {
-  jwtToken: localStorage.getItem("default_auth_token")
+  jwtToken: localStorage.getItem("default_auth_token"),
+  ready: null,
+  sessionResolved: null,
+  sessionRejected: null
 };
 
 const types = {
-  SET_JWT_TOKEN: "SET_JWT_TOKEN"
+  SET_JWT_TOKEN: "SET_JWT_TOKEN",
+  SET_RESOLVED: "SET_RESOLVED",
+  SET_REJECTED: "SET_REJECTED",
+  INIT_READY: "INIT_READY"
 };
 
 const actions = {
@@ -23,26 +22,55 @@ const actions = {
   logout({ dispatch }) {
     return new Promise(resolve => {
       Vue.auth.logout();
-      dispatch("session/resetSession");
+      dispatch("resetSession");
       resolve();
     });
   },
 
-  resetSession({ commit, dispatch }) {
-    // TODO, should reset the whole store
-    commit(types.FETCH_USER, {});
-    dispatch("session/setJWTToken", null);
+  resetSession({ dispatch }) {
+    dispatch("user/resetUser", null, { root: true });
+    dispatch("setJWTToken", null);
+    dispatch("init");
+  },
+
+  setResolved({ commit }) {
+    commit(types.SET_RESOLVED);
+  },
+
+  setRejected({ commit }, error) {
+    commit(types.SET_REJECTED, error);
+  },
+
+  init({ commit }) {
+    commit(types.INIT_READY);
   }
 };
 
 const mutations = {
   [types.SET_JWT_TOKEN](state, token) {
     state.jwtToken = token;
+  },
+
+  [types.SET_RESOLVED](state) {
+    state.sessionResolved();
+  },
+
+  [types.SET_REJECTED](state, error) {
+    // TODO: For now, we do not reject the session because if we are not logged, vue-auth will reject
+    // and then we are blocked. We will have to notify in some cases...
+    //state.sessionRejected(error);
+  },
+
+  [types.INIT_READY](state) {
+    state.ready = new Promise((resolve, reject) => {
+      state.sessionResolved = resolve;
+      state.sessionRejected = reject;
+    });
   }
 };
 
 const getters = {
-  ready: () => ready
+  ready: state => state.ready
 };
 
 export default {
@@ -52,5 +80,3 @@ export default {
   actions,
   mutations
 };
-
-export { userResolve, userReject };

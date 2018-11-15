@@ -1,6 +1,5 @@
 import Vue from "vue";
 import { configurationRecursiveSearch } from "@/lib/helpers";
-import { userResolve, userReject } from "@/store/modules/session";
 
 const state = {
   user: null
@@ -11,14 +10,20 @@ const types = {
 };
 
 const actions = {
-  fetchUser({ commit }) {
+  fetchUser({ commit, dispatch }) {
     Vue.axios
       .get("api/user")
       .then(response => {
         commit(types.SET_USER, response.data);
-        userResolve();
+        dispatch("session/setResolved", null, { root: true });
       })
-      .catch(error => userReject(error));
+      .catch(error => {
+        dispatch("session/setRejected", error, { root: true });
+      });
+  },
+
+  resetUser({ commit }) {
+    commit(types.SET_USER, {});
   }
 };
 
