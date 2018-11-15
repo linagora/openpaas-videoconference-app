@@ -2,7 +2,7 @@
   <v-app id="openpaas">
     <div v-if="$auth.ready()">
       <v-toolbar clipped-left app fixed color="primary" v-if="$auth.check()">
-        <v-toolbar-title style="width: 300px">
+        <v-toolbar-title>
           <img id="header-logo" src="@/assets/logo.svg"/>
         </v-toolbar-title>
         <v-spacer></v-spacer>
