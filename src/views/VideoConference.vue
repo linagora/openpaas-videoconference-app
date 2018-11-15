@@ -65,6 +65,7 @@ export default {
           SHOW_JITSI_WATERMARK: false,
           SHOW_BRAND_WATERMARK: false,
           SHOW_WATERMARK_FOR_GUESTS: false,
+          TOOLBAR_ALWAYS_VISIBLE: true,
           TOOLBAR_BUTTONS: this.jitsiToolbarButtons
         }
       });
