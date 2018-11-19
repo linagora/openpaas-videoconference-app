@@ -39,6 +39,7 @@ export default {
   methods: {
     login() {
       this.logMeIn = true;
+      const redirect = this.$auth.redirect();
       this.$auth
         .login({
           url: "api/jwt/generate",
@@ -47,7 +48,7 @@ export default {
             password: this.password
           },
           rememberMe: false,
-          redirect: { name: "home" }
+          redirect: { path: redirect.from.path }
         })
         .then(response => {
           this.$store.dispatch("session/setJWTToken", response.data);
