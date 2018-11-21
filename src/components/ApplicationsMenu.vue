@@ -13,7 +13,7 @@
             <v-container grid-list-xl fluid>
                 <v-layout row wrap>
                     <v-flex xs4 d-flex>
-                        <router-link :to="{ name: 'home' }">
+                        <router-link :to="{ name: 'Home' }">
                             <v-icon large color="blue">home</v-icon>
                         </router-link>
                     </v-flex>

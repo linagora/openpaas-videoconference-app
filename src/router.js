@@ -6,10 +6,12 @@ import VideoConference from "@/views/VideoConference.vue";
 Vue.use(Router);
 
 export default new Router({
+  base: process.env.BASE_URL, // Needed for dev/build and HTML history
+  mode: "history",
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "Home",
       redirect: {
         name: "VideoConference",
         params: { conferenceid: process.env.VUE_APP_JITSI_DEFAULT_CONFERENCE_ROOM }
