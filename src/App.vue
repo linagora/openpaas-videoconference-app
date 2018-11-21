@@ -27,7 +27,6 @@
 import UserMenu from "@/components/UserMenu.vue";
 import Snackbar from "@/components/Snackbar.vue";
 
-
 export default {
   components: {
     "op-user-menu": UserMenu,

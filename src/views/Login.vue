@@ -8,9 +8,26 @@
               <v-toolbar-title class="white--text">OpenPaaS Login</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
-              <v-form @keydown.native.enter="login">
-                <v-text-field prepend-icon="person" name="login" label="Login" type="text" v-model="email" autofocus></v-text-field>
-                <v-text-field prepend-icon="lock" name="password" label="Password" id="password" type="password" v-model="password" required></v-text-field>
+              <v-form class="login-form" @keydown.native.enter="login">
+                <v-text-field
+                        class="login-user-input"
+                        prepend-icon="person"
+                        name="login"
+                        label="Login"
+                        type="text"
+                        v-model="email"
+                        autofocus
+                ></v-text-field>
+                <v-text-field
+                        class="login-password-input"
+                        prepend-icon="lock"
+                        name="password"
+                        label="Password"
+                        id="password"
+                        type="password"
+                        v-model="password"
+                        required
+                ></v-text-field>
               </v-form>
             </v-card-text>
             <v-card-actions>
@@ -39,7 +56,9 @@ export default {
   methods: {
     login() {
       const redirectHistory = this.$auth.redirect();
-      const redirect = redirectHistory ? { name: redirectHistory.from.name, params: redirectHistory.from.params } : { name: 'Home' };
+      const redirect = redirectHistory
+        ? { name: redirectHistory.from.name, params: redirectHistory.from.params }
+        : { name: "Home" };
 
       this.logMeIn = true;
       this.$auth

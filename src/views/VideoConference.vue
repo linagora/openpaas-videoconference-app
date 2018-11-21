@@ -24,7 +24,7 @@ export default {
       videoConference: null,
       loaded: false,
       roomName: "",
-      displayReopenRoomButton: false,
+      displayReopenRoomButton: false
     };
   },
   props: { conferenceid: String },
