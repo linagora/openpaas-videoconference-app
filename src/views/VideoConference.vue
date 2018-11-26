@@ -3,12 +3,12 @@
         <div class="text-xs-center" v-show="showLoader">
             <v-progress-circular indeterminate color="amber" :size="50"></v-progress-circular>
             <div class="title pa-3">
-                Loading conference...
+              {{$t('Loading conference...')}}
             </div>
         </div>
         <div id="jitsi" v-show="loaded" ref="jitsivideo"></div>
         <div v-show="displayReopenRoomButton">
-            <v-btn color="info" @click="openConference">Reopen conference room</v-btn>
+            <v-btn color="info" @click="openConference">{{$t('Reopen conference room')}}</v-btn>
         </div>
     </div>
 </template>
