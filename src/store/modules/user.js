@@ -52,7 +52,7 @@ const getters = {
 
   configurations: state => configurationKey => {
     return state.user && configurationRecursiveSearch(state.user.configurations.modules, configurationKey);
-  },
+  }
 };
 
 export default {

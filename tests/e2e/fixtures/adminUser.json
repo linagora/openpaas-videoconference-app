@@ -1,0 +1,157 @@
+{
+  "_id": "5bebeeae1931ee6d1cc1f32a",
+  "firstname": "admin",
+  "lastname": "admin",
+  "preferredEmail": "admin@open-paas.org",
+  "emails": [
+    "admin@open-paas.org"
+  ],
+  "domains": [
+    {
+      "domain_id": "5bebeeae1931ee6d1cc1f32b",
+      "joined_at": "2018-11-14T09:45:18.499Z"
+    }
+  ],
+  "states": [],
+  "avatars": [],
+  "accounts": [
+    {
+      "type": "email",
+      "timestamps": {
+        "creation": "2018-11-14T09:45:18.421Z"
+      },
+      "preferredEmailIndex": 0,
+      "emails": [
+        "admin@open-paas.org"
+      ],
+      "hosted": false
+    }
+  ],
+  "login": {
+    "failures": [],
+    "success": "2018-11-21T08:41:00.713Z"
+  },
+  "id": "5bebeeae1931ee6d1cc1f32a",
+  "followers": 0,
+  "followings": 0,
+  "isPlatformAdmin": true,
+  "configurations": {
+    "modules": [
+      {
+        "name": "linagora.esn.james",
+        "configurations": [
+          {
+            "name": "webadminApiFrontend",
+            "value": "http://localhost:8000"
+          }
+        ]
+      },
+      {
+        "name": "core",
+        "configurations": [
+          {
+            "name": "davserver",
+            "value": {
+              "backend": {
+                "url": "http://localhost:8001"
+              }
+            }
+          },
+          {
+            "name": "features",
+            "value": {
+              "header:user-notification": true,
+              "control-center:password": true,
+              "control-center:appstore": false,
+              "application-menu:invitation": false,
+              "application-menu:jobqueue": false
+            }
+          },
+          {
+            "name": "homePage",
+            "value": "unifiedinbox"
+          },
+          {
+            "name": "datetime",
+            "value": {
+              "timeZone": "Europe/Berlin"
+            }
+          },
+          {
+            "name": "language",
+            "value": "en"
+          }
+        ]
+      },
+      {
+        "name": "linagora.esn.videoconference",
+        "configurations": []
+      },
+      {
+        "name": "linagora.esn.unifiedinbox",
+        "configurations": [
+          {
+            "name": "api",
+            "value": "http://localhost:1080/jmap"
+          },
+          {
+            "name": "uploadUrl",
+            "value": "http://localhost:1080/upload"
+          },
+          {
+            "name": "downloadUrl",
+            "value": "http://localhost:1080/download/{blobId}/{name}"
+          },
+          {
+            "name": "isJmapSendingEnabled",
+            "value": true
+          },
+          {
+            "name": "isSaveDraftBeforeSendingEnabled",
+            "value": false
+          },
+          {
+            "name": "composer.attachments",
+            "value": true
+          },
+          {
+            "name": "maxSizeUpload",
+            "value": 20971520
+          },
+          {
+            "name": "numberItemsPerPageOnBulkReadOperations",
+            "value": 30
+          },
+          {
+            "name": "numberItemsPerPageOnBulkDeleteOperations",
+            "value": 30
+          },
+          {
+            "name": "numberItemsPerPageOnBulkUpdateOperations",
+            "value": 30
+          },
+          {
+            "name": "drafts",
+            "value": true
+          },
+          {
+            "name": "view",
+            "value": "messages"
+          },
+          {
+            "name": "swipeRightAction",
+            "value": "markAsRead"
+          },
+          {
+            "name": "forwarding",
+            "value": true
+          },
+          {
+            "name": "isLocalCopyEnabled",
+            "value": true
+          }
+        ]
+      }
+    ]
+  }
+}

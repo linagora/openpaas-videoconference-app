@@ -23,3 +23,29 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+Cypress.Commands.add("application", () => cy.window().its("Application"));
+Cypress.Commands.add("nextTick", callback => cy.application().then(app => app.$nextTick(() => callback(app))));
+Cypress.Commands.add("login", (user, password, jwtFixture = "adminUserJwt.json") => {
+  cy.visit("/");
+  cy.server();
+  cy.fixture(jwtFixture).then(fixture => {
+    cy.route({
+      method: "POST",
+      url: "/api/jwt/generate",
+      status: 200,
+      response: fixture
+    });
+
+    cy.application().then(app => {
+      app.$auth.login({
+        url: "api/jwt/generate",
+        auth: {
+          username: user,
+          password: password
+        },
+        rememberMe: false,
+        redirect: { name: "Home" }
+      });
+    });
+  });
+});
