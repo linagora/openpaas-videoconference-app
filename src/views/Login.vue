@@ -5,7 +5,7 @@
         <v-flex xs12 sm8 md4>
           <v-card class="elevation-12">
             <v-toolbar color="primary">
-              <v-toolbar-title class="white--text">OpenPaaS Login</v-toolbar-title>
+              <v-toolbar-title class="white--text">{{$t('OpenPaaS Login')}}</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
               <v-form class="login-form" @keydown.native.enter="login">
@@ -13,7 +13,7 @@
                         class="login-user-input"
                         prepend-icon="person"
                         name="login"
-                        label="Login"
+                        :label="$t('Login')"
                         type="text"
                         v-model="email"
                         autofocus
@@ -22,7 +22,7 @@
                         class="login-password-input"
                         prepend-icon="lock"
                         name="password"
-                        label="Password"
+                        :label="$t('Password')"
                         id="password"
                         type="password"
                         v-model="password"
@@ -35,7 +35,7 @@
               <v-btn
                 :disabled="logMeIn"
                 :loading="logMeIn"
-                @click="login">Login</v-btn>
+                @click="login">{{$t('Login')}}</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>

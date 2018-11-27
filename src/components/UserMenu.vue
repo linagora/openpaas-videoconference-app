@@ -13,7 +13,7 @@
       </v-list-tile>
       <v-divider/>
       <v-list-tile class="logout" @click.prevent="logout">
-        <v-list-tile-title>Log out</v-list-tile-title>
+        <v-list-tile-title>{{$t('Logout')}}</v-list-tile-title>
       </v-list-tile>
     </v-list>
   </v-menu>
