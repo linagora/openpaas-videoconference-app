@@ -3,10 +3,12 @@
   "Create": "Create",
   "Create a new conference": "Create a new conference",
   "Enter your conference name": "Enter your conference name",
+  "Copy link": "Copy link",
   "OpenPaaS Login": "OpenPaaS Login",
   "Login": "Login",
   "Logout": "Logout",
   "Loading conference...": "Loading conference...",
   "Password": "Password",
-  "Reopen conference room": "Reopen conference room"
+  "Reopen conference room": "Reopen conference room",
+  "Share conference": "Share conference"
 }

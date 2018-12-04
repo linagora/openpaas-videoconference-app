@@ -3,10 +3,12 @@
   "Create": "Créer",
   "Create a new conference": "Créer une nouvelle conférence",
   "Enter your conference name": "Entrer le nom de votre conférence",
+  "Copy link": "Copier le lien",
   "OpenPaaS Login": "Se connecter avec OpenPaas",
   "Login": "Se connecter",
   "Logout": "Se déconnecter",
   "Loading conference...": "Chargement de la conférence...",
   "Password": "Mot de Passe",
-  "Reopen conference room": "Rouvrir la conférence"
+  "Reopen conference room": "Rouvrir la conférence",
+  "Share conference": "Partager la conférence"
 }

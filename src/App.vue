@@ -7,6 +7,7 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <op-user-menu/>
+        <op-actions-menu/>
       </v-toolbar>
       <v-content>
         <v-container fluid fill-height pa-0>
@@ -26,11 +27,13 @@
 <script>
 import UserMenu from "@/components/UserMenu.vue";
 import Snackbar from "@/components/Snackbar.vue";
+import ActionsMenu from "@/components/ActionsMenu.vue";
 
 export default {
   components: {
     "op-user-menu": UserMenu,
-    "op-snackbar": Snackbar
+    "op-snackbar": Snackbar,
+    "op-actions-menu": ActionsMenu
   },
   created() {
     this.$auth.ready(() => {

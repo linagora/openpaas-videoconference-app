@@ -3,10 +3,12 @@
   "Create": "Tạo",
   "Create a new conference": "Tạo hội nghị",
   "Enter your conference name": "Nhập tên hội nghị",
+  "Copy link": "sao chép liên kết",
   "OpenPaaS Login": "Đăng nhập OpenPaaS",
   "Loading conference...": "Đang tải hội nghị...",
   "Login": "Đăng nhập",
   "Logout": "Đăng xuất",
   "Password": "Mật khẩu",
-  "Reopen conference room": "Mở lại phòng hội nghị"
+  "Reopen conference room": "Mở lại phòng hội nghị",
+  "Share conference": "Chia sẻ hội nghị"
 }
