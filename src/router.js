@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Login from "@/views/Login.vue";
-import VideoConference from "@/views/VideoConference.vue";
+import PrivateVideoConference from "@/views/PrivateVideoConference";
+import PublicVideoConference from "@/views/PublicVideoConference";
 import CreateConference from "@/views/CreateConference.vue";
 
 Vue.use(Router);
@@ -40,11 +41,17 @@ export default new Router({
     {
       path: "/:conferenceid",
       name: "VideoConference",
-      component: VideoConference,
+      component: PrivateVideoConference,
       props: route => ({ conferenceid: route.params.conferenceid }),
       meta: {
         auth: true
       }
+    },
+    {
+      path: "/o/:conferenceid",
+      name: "PublicVideoConference",
+      component: PublicVideoConference,
+      props: route => ({ conferenceid: route.params.conferenceid })
     }
   ]
 });
