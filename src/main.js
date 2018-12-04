@@ -6,6 +6,7 @@ import services from "./services/index";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import Vuetify from "vuetify";
+import VueClipboard from "vue-clipboard2";
 import theme from "./theme";
 import { i18n } from "@/i18n/index";
 import "./main.styl";
@@ -17,6 +18,8 @@ Vue.router = router;
 Vue.use(require("@websanova/vue-auth"), services.auth);
 
 Vue.use(Vuetify, { theme });
+
+Vue.use(VueClipboard);
 
 Vue.config.productionTip = false;
 
