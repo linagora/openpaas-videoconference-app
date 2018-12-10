@@ -1,4 +1,8 @@
 {
+  "A conference name is required": "A conference name is required",
+  "Create": "Create",
+  "Create a new conference": "Create a new conference",
+  "Enter your conference name": "Enter your conference name",
   "OpenPaaS Login": "OpenPaaS Login",
   "Login": "Login",
   "Logout": "Logout",

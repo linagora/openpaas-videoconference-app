@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Login from "@/views/Login.vue";
 import VideoConference from "@/views/VideoConference.vue";
+import CreateConference from "@/views/CreateConference.vue";
 
 Vue.use(Router);
 
@@ -26,6 +27,14 @@ export default new Router({
       component: Login,
       meta: {
         auth: false
+      }
+    },
+    {
+      path: "/new",
+      name: "CreateConference",
+      component: CreateConference,
+      meta: {
+        auth: true
       }
     },
     {
