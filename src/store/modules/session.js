@@ -4,14 +4,16 @@ const state = {
   jwtToken: localStorage.getItem("default_auth_token"),
   ready: null,
   sessionResolved: null,
-  sessionRejected: null
+  sessionRejected: null,
+  justLogout: null
 };
 
 const types = {
   SET_JWT_TOKEN: "SET_JWT_TOKEN",
   SET_RESOLVED: "SET_RESOLVED",
   SET_REJECTED: "SET_REJECTED",
-  INIT_READY: "INIT_READY"
+  INIT_READY: "INIT_READY",
+  JUST_LOGOUT: "JUST_LOGOUT"
 };
 
 const actions = {
@@ -30,6 +32,7 @@ const actions = {
   resetSession({ dispatch }) {
     dispatch("user/resetUser", null, { root: true });
     dispatch("setJWTToken", null);
+    dispatch("justLogout", null);
     dispatch("init");
   },
 
@@ -43,6 +46,10 @@ const actions = {
 
   init({ commit }) {
     commit(types.INIT_READY);
+  },
+
+  justLogout({ commit }) {
+    commit(types.JUST_LOGOUT);
   }
 };
 
@@ -66,6 +73,10 @@ const mutations = {
       state.sessionResolved = resolve;
       state.sessionRejected = reject;
     });
+  },
+
+  [types.JUST_LOGOUT](state) {
+    state.justLogout = true;
   }
 };
 

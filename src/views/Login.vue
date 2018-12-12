@@ -45,6 +45,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   data() {
     return {
@@ -53,12 +55,18 @@ export default {
       password: null
     };
   },
+  computed: {
+    ...mapState("session", ["justLogout"])
+  },
   methods: {
     login() {
-      const redirectHistory = this.$auth.redirect();
+      let redirectHistory = this.$auth.redirect();
+
+      if (this.justLogout) redirectHistory = false;
+
       const redirect = redirectHistory
         ? { name: redirectHistory.from.name, params: redirectHistory.from.params }
-        : { name: "Home" };
+        : { name: "CreateConference" };
 
       this.logMeIn = true;
       this.$auth
