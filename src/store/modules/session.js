@@ -62,6 +62,7 @@ const mutations = {
     state.sessionResolved();
   },
 
+  // eslint-disable-next-line no-unused-vars
   [types.SET_REJECTED](state, error) {
     // TODO: For now, we do not reject the session because if we are not logged, vue-auth will reject
     // and then we are blocked. We will have to notify in some cases...

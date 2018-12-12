@@ -1,8 +1,20 @@
 image: node:10
 
 stages:
+  - lint
   - test
   - deploy_dev
+
+lint:
+  stage: lint
+  except:
+    - triggers
+  tags:
+    - docker
+  image: node:10
+  script:
+   - npm install
+   - NODE_ENV=production npm run lint
 
 test_unit:
   stage: test
