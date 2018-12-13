@@ -3,6 +3,7 @@ image: node:10
 stages:
   - test
   - deploy_dev
+  - docker_build
 
 test_unit:
   stage: test
@@ -51,3 +52,16 @@ deploy_dev:
     - npm run build
     - rm -fr /srv/vue-apps/${CI_PROJECT_NAME}/*
     - cp -fr /srv/${CI_PROJECT_NAME}/dist/* /srv/vue-apps/${CI_PROJECT_NAME}/
+
+docker_build:
+  stage: docker_build
+  tags:
+    - docker
+  services:
+    - name: docker-registry.linagora.com:5000/linshare-snapshots/linshare-dind:latest
+      alias: docker-dind
+  variables:
+    DOCKER_HOST: "tcp://docker-dind"
+  image: docker-registry.linagora.com:5000/linshare-snapshots/linshare-dind:latest
+  script:
+    - docker build .
