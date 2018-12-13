@@ -1,12 +1,12 @@
 <template>
-  <v-menu :nudge-width="100" bottom offset-y>
+  <v-menu class="conference-options-menu" :nudge-width="100" bottom offset-y>
     <v-btn icon slot="activator" color="primary">
         <v-icon medium>more_vert</v-icon>
     </v-btn>
     <v-list>
         <v-list-tile>
           <v-list-tile-title>
-            <op-share-action/>
+            <op-share-action></op-share-action>
           </v-list-tile-title>
         </v-list-tile>
     </v-list>

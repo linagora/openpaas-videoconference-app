@@ -20,7 +20,7 @@ export default {
       component: "op-loading"
     };
   },
-  props: { conferenceid: String },
+  props: { publicId: { type: String, required: true } },
   computed: {
     ...mapGetters("user", ["getDisplayName", "getAvatarUrl", "getEmail"]),
     ...mapGetters("session", { sessionReady: "ready" }),
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     async getComponent() {
-      const { data } = await this.$http.get(`/videoconference/api/conference/${this.conferenceid}`);
+      const { data } = await this.$http.getConferenceByPublicId(this.publicId);
       this.roomName = data.conferenceName;
       this.jitsiInstanceUrl = data.jitsiInstanceUrl;
 

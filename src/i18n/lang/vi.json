@@ -10,5 +10,10 @@
   "Logout": "Đăng xuất",
   "Password": "Mật khẩu",
   "Reopen conference room": "Mở lại phòng hội nghị",
-  "Share conference": "Chia sẻ hội nghị"
+  "Share conference": "Chia sẻ hội nghị",
+  "We are generating a public conference": "Chúng tôi đang tạo phòng hội nghị công khai",
+  "Please wait...": "Vui lòng đợi...",
+  "Error": "Lỗi",
+  "We have not been able to generate your public conference": "Chúng tôi không thể tạo phòng hội nghị công khai của bạn",
+  "Retry": "Thử lại"
 }

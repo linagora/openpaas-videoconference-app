@@ -19,21 +19,20 @@ export default {
       component: "op-loading"
     };
   },
-  props: { conferenceid: String },
+  props: { conferenceName: { type: String, required: true } },
   computed: {
-    ...mapGetters("user", ["getDisplayName", "getAvatarUrl", "getEmail"]),
+    ...mapGetters("user", ["getDisplayName", "getAvatarUrl", "getEmail", "configurations"]),
     ...mapGetters("session", { sessionReady: "ready" }),
     ...mapState("applicationConfiguration", ["jitsiToolbarButtons"]),
     jitsiInstanceUrl() {
-      const stripProtocol = urlString => (urlString ? urlString.replace(`${new URL(urlString).protocol}//`, "") : "");
-      return stripProtocol(this.configurations("linagora.esn.videoconference:jitsiInstanceUrl"));
+      return this.configurations("linagora.esn.videoconference:jitsiInstanceUrl");
     },
     videoConferenceProps() {
       return this.component === "op-loading"
         ? { waitingText: "Loading conference..." }
         : {
             jitsiInstanceUrl: this.jitsiInstanceUrl,
-            roomName: this.conferenceid,
+            roomName: this.conferenceName,
             userName: this.getDisplayName,
             userAvatarUrl: this.getAvatarUrl,
             userEmail: this.getEmail
@@ -43,7 +42,7 @@ export default {
   methods: {
     async getComponent() {
       await this.sessionReady;
-      this.roomName = this.conferenceid;
+      this.roomName = this.conferenceName;
 
       return "op-videoconference";
     }
@@ -52,7 +51,7 @@ export default {
     this.component = await this.getComponent();
   },
   async beforeRouteUpdate(to, _, next) {
-    if (to.params.conferenceid !== this.conferenceid) {
+    if (to.params.conferenceName !== this.conferenceName) {
       this.component = "op-loading";
       next();
       this.component = await this.getComponent();

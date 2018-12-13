@@ -10,5 +10,10 @@
   "Loading conference...": "Loading conference...",
   "Password": "Password",
   "Reopen conference room": "Reopen conference room",
-  "Share conference": "Share conference"
+  "Share conference": "Share conference",
+  "We are generating a public conference": "We are generating a public conference",
+  "Please wait...": "Please wait...",
+  "Error": "Error",
+  "We have not been able to generate your public conference": "We have not been able to generate your public conference",
+  "Retry": "Retry"
 }

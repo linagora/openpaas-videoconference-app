@@ -13,12 +13,12 @@
             <v-container grid-list-xl fluid>
                 <v-layout row wrap>
                     <v-flex xs4 d-flex>
-                        <router-link :to="{ name: 'Home' }">
+                        <router-link :to="{ name: routeNames.HOME }">
                             <v-icon large color="blue">home</v-icon>
                         </router-link>
                     </v-flex>
                     <v-flex xs4 d-flex>
-                        <router-link :to="{ name: 'VideoConference' }">
+                        <router-link :to="{ name: routeNames.HOME }">
                             <v-icon large color="blue">video_call</v-icon>
                         </router-link>
                     </v-flex>
@@ -30,7 +30,14 @@
 
 
 <script>
-export default {};
+import { routeNames } from "@/router";
+export default {
+  computed: {
+    routeNames() {
+      return routeNames;
+    }
+  }
+};
 </script>
 
 <style scoped>

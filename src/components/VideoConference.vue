@@ -1,14 +1,15 @@
 <template>
-    <div id="video">
-        <op-loading waiting-text="Loading conference..." v-show="showLoader"></op-loading>
-        <div id="jitsi" v-show="loaded" ref="jitsivideo"></div>
-        <div v-show="displayReopenRoomButton">
-            <v-btn color="info" @click="openConference">{{$t('Reopen conference room')}}</v-btn>
-        </div>
+  <div id="video">
+    <op-loading waiting-text="Loading conference..." v-show="showLoader"></op-loading>
+    <div id="jitsi" v-show="loaded" ref="jitsivideo"></div>
+    <div v-show="displayReopenRoomButton">
+      <v-btn color="info" @click="openConference">{{$t('Reopen conference room')}}</v-btn>
     </div>
+  </div>
 </template>
 
 <script>
+import { stripProtocol } from "@/lib/helpers";
 import { mapGetters, mapState } from "vuex";
 import getJitsiMeetExternalAPI from "@/lib/jitsi-meet-external-api-wrapper";
 import { OPLoading } from "vue-openpaas-components";
@@ -35,6 +36,9 @@ export default {
     ...mapGetters("user", ["configurations"]),
     showLoader() {
       return !this.loaded && !this.displayReopenRoomButton;
+    },
+    safeJitsiInstanceUrl() {
+      return stripProtocol(this.jitsiInstanceUrl);
     }
   },
   methods: {
@@ -51,7 +55,7 @@ export default {
 
       this.loaded = false;
       this.displayReopenRoomButton = false;
-      this.videoConference = new JitsiMeetExternalAPI(this.jitsiInstanceUrl, {
+      this.videoConference = new JitsiMeetExternalAPI(this.safeJitsiInstanceUrl, {
         roomName: this.roomName,
         parentNode: this.$refs.jitsivideo,
         configOverwrite: { enableClosePage: false },
@@ -81,20 +85,20 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-    #video {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
+  #video {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 
+  #jitsi {
+    width: 100%
+    height: calc(100vh - 64px)
+  }
+
+  @media only screen and (max-width: 959px) {
     #jitsi {
-      width: 100%
-      height: calc(100vh - 64px)
+      height: calc(100vh - 48px)
     }
-
-    @media only screen and (max-width: 959px) {
-      #jitsi {
-        height: calc(100vh - 48px)
-      }
-    }
+  }
 </style>

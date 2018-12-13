@@ -10,5 +10,10 @@
   "Loading conference...": "Chargement de la conférence...",
   "Password": "Mot de Passe",
   "Reopen conference room": "Rouvrir la conférence",
-  "Share conference": "Partager la conférence"
+  "Share conference": "Partager la conférence",
+  "We are generating a public conference": "Nous sommes en train de générer une conférence publique",
+  "Please wait...": "Veuillez patienter...",
+  "Error": "Erreur",
+  "We have not been able to generate your public conference": "Nous n'avons pas pu générer une conference publique",
+  "Retry": "Réessayer"
 }
