@@ -1,5 +1,5 @@
+import Axios from "axios";
 import store from "@/store";
-import axios from "axios";
 import functions from "./videoconference-api";
 
 const defaults = {
@@ -7,7 +7,7 @@ const defaults = {
 };
 
 function Api(config) {
-  const instance = axios.create(Object.assign({}, defaults, config));
+  const instance = Axios.create(Object.assign({}, defaults, config));
   Object.assign(instance, functions);
   return instance;
 }

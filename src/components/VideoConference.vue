@@ -110,7 +110,7 @@ export default {
       this.startCountdown();
 
       this.videoConference = new JitsiMeetExternalAPI(this.safeJitsiInstanceUrl, this.jitsiOptions);
-      this.videoConference.on("videoConferenceJoined", this.onVideoConferenceJoined);
+      //this.videoConference.on("videoConferenceJoined", this.onVideoConferenceJoined);
       this.videoConference.on("readyToClose", () => {
         this.dispose();
         this.conferenceState = conferenceStates.CALL_ENDED;
@@ -120,10 +120,15 @@ export default {
       const assertStateAndMutate = state => this.showLoader && (this.conferenceState = state);
       const $timeout = timeout => new Promise(resolve => setTimeout(this.$nextTick, timeout, resolve));
 
-      $timeout(this.takingTimeTimeout)
-        .then(_partial(assertStateAndMutate, conferenceStates.TAKING_TIME))
+      const firstPromise = $timeout(this.conferenceServerTimeout).then(
+        _partial(assertStateAndMutate, conferenceStates.TAKING_TIME)
+      );
+
+      const secondPromise = firstPromise
         .then(_partial($timeout, this.conferenceServerTimeout))
         .then(_partial(assertStateAndMutate, conferenceStates.TIMED_OUT));
+
+      return [firstPromise, secondPromise];
     }
   },
   beforeMount() {

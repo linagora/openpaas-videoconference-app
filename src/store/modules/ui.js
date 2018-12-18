@@ -43,7 +43,7 @@ const mutations = {
   [types.CONFERENCE_SERVER_TIMEOUT](state, newTimeout) {
     state.conferenceServerTimeout = newTimeout;
   },
-  [types.CONFERENCE_STATE](state, newConferenceState){
+  [types.CONFERENCE_STATE](state, newConferenceState) {
     state.conferenceState = newConferenceState;
   }
 };
