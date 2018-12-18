@@ -1,5 +1,4 @@
 <template>
-  <v-content>
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
           <v-card width="60vw" class="elevation-12">
@@ -25,7 +24,6 @@
           </v-card>
       </v-layout>
     </v-container>
-  </v-content>
 </template>
 
 <script>
