@@ -1,7 +1,7 @@
 <template>
   <!-- Don't show the share link if this is not a conference (just for security matters) -->
   <div class="share-action text-xs-center">
-    <button @click.prevent.stop="generatePublicConference">
+    <button @click.prevent="generatePublicConference">
       {{$t('Share conference')}}
     </button>
 
