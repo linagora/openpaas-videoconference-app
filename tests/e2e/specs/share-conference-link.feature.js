@@ -1,14 +1,13 @@
 describe("The conference sharing feature", () => {
   describe("When I am not on a private conference page", () => {
-    it("I should not a a 'share video conference link'", () => {
+    it("I should not see a 'share video conference link'", () => {
       cy.login({ redirectPath: "/o/5123524a-5bff-454d-8a6c-8356faedc723" });
-      cy.get(".conference-options-menu").click();
-      cy.get(".share-action").should("not.be.visible");
+      cy.get(".conference-options-menu").should("not.be.visible");
     });
   });
 
   describe("When I am on a private conference page", () => {
-    it("I should not a a 'share video conference link'", () => {
+    it("I should see a 'share video conference link'", () => {
       cy.login({ redirectPath: "/OpenPaaS" });
       cy.get(".conference-options-menu").click();
       cy.get(".share-action").should("be.visible");
