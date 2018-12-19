@@ -1,14 +1,10 @@
 <template>
   <v-menu v-if="showMenu" class="conference-options-menu" :nudge-width="100" bottom offset-y>
     <v-btn icon slot="activator" color="primary">
-        <v-icon medium>more_vert</v-icon>
+      <v-icon medium>more_vert</v-icon>
     </v-btn>
     <v-list>
-        <v-list-tile>
-          <v-list-tile-title>
-            <op-share-action v-if="conferenceName"></op-share-action>
-          </v-list-tile-title>
-        </v-list-tile>
+      <op-share-action v-if="conferenceName"></op-share-action>
     </v-list>
   </v-menu>
 </template>

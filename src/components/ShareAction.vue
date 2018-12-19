@@ -1,9 +1,11 @@
 <template>
-  <!-- Don't show the share link if this is not a conference (just for security matters) -->
-  <div class="share-action text-xs-center">
-    <button @click.prevent="generatePublicConference">
-      {{$t('Share conference')}}
-    </button>
+  <v-list-tile class="share-action" @click.prevent="generatePublicConference">
+    <v-list-tile-action>
+      <v-icon>share</v-icon>
+    </v-list-tile-action>
+    <v-list-tile-content>
+      <v-list-tile-title>{{$t('Share conference')}}</v-list-tile-title>
+    </v-list-tile-content>
 
     <v-dialog content-class="share-conference-modal" v-model="showDialog" lazy width="600">
       <v-card id="conference-modal">
@@ -21,9 +23,7 @@
               </v-card-text>
             </v-layout>
           </v-container>
-
         </template>
-
 
         <!-- Modal content when state is error -->
         <template v-else-if="showError">
@@ -96,7 +96,7 @@
 
       </v-card>
     </v-dialog>
-  </div>
+  </v-list-tile>
 </template>
 
 <script>
