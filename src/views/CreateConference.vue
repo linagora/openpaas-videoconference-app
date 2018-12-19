@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import { routeNames } from "@/router";
+
 export default {
   data() {
     return {
@@ -38,7 +40,10 @@ export default {
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
-        this.$router.push({ name: "VideoConference", params: { conferenceid: this.conferenceName } });
+        this.$router.push({
+          name: routeNames.PRIVATE_VIDEOCONFERENCE,
+          params: { conferenceName: this.conferenceName }
+        });
       }
     }
   }

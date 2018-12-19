@@ -1,13 +1,19 @@
 <template>
   <v-app id="openpaas">
+    <!-- Toolbar -->
+    <v-toolbar clipped-left app fixed color="primary">
+      <v-toolbar-title>
+        <img id="header-logo" src="@/assets/logo.svg" alt="OpenPaas logo"/>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <op-actions-menu/>
+
+      <!-- User menu always at the end -->
+      <op-user-menu v-if="$auth.check()"/>
+    </v-toolbar>
+
+    <!-- Page content -->
     <template v-if="$auth.ready()">
-      <v-toolbar clipped-left app fixed color="primary" v-if="$auth.check()">
-        <v-toolbar-title>
-          <img id="header-logo" src="@/assets/logo.svg"/>
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <op-user-menu/>
-      </v-toolbar>
       <v-content>
         <v-container fluid fill-height pa-0>
           <v-layout justify-center align-center>
@@ -26,11 +32,13 @@
 <script>
 import UserMenu from "@/components/UserMenu.vue";
 import Snackbar from "@/components/Snackbar.vue";
+import ActionsMenu from "@/components/ActionsMenu.vue";
 
 export default {
   components: {
     "op-user-menu": UserMenu,
-    "op-snackbar": Snackbar
+    "op-snackbar": Snackbar,
+    "op-actions-menu": ActionsMenu
   },
   created() {
     this.$auth.ready(() => {

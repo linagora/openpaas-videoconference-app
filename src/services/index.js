@@ -1,5 +1,4 @@
-import auth from "./auth/index";
+import auth from "./auth";
+import api from "./api";
 
-export default {
-  auth
-};
+export { auth, api };

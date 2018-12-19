@@ -1,3 +1,5 @@
+import _isString from "lodash/isString";
+
 /**
  * This function searches throught the user's configuration for a specific value and returns it if found
  * or returns undefined otherwise.
@@ -45,4 +47,12 @@ function configurationRecursiveSearch(configurations = [], keys = "") {
   return configurationRecursiveSearch(targetConfig[0].configurations, newKeys.join(":"));
 }
 
-export { configurationRecursiveSearch };
+function stripProtocol(urlString) {
+  if (!_isString(urlString)) {
+    return "";
+  }
+
+  return /:\/\//.test(urlString) ? urlString.replace(`${new URL(urlString).protocol}//`, "") : urlString;
+}
+
+export { configurationRecursiveSearch, stripProtocol };
