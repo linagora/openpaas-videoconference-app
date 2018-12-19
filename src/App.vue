@@ -19,7 +19,13 @@
       </v-content>
     </template>
     <template v-else>
-      <v-progress-circular indeterminate :size="50" color="primary"></v-progress-circular>
+      <v-content>
+        <v-container fluid fill-height pa-0>
+          <v-layout justify-center align-center>
+            <v-progress-circular indeterminate :size="50" color="primary"></v-progress-circular>
+          </v-layout>
+        </v-container>
+      </v-content>
     </template>
     <op-snackbar/>
   </v-app>
