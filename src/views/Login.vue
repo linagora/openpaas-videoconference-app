@@ -13,7 +13,7 @@
                         class="login-user-input"
                         prepend-icon="person"
                         name="login"
-                        :label="$t('Login')"
+                        :label="$t('E-mail')"
                         type="text"
                         v-model="email"
                         autofocus
