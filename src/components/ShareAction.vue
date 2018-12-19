@@ -68,7 +68,12 @@
                   <v-icon left color="black">link</v-icon>
                 </v-flex>
                 <v-flex class="url hidden-xs-and-down px-0" d-flex>
-                  <v-btn class="url-link-btn" v-clipboard:copy="publicRoute" @click="showDialog = false" flat>
+                  <v-btn
+                    class="url-link-btn"
+                    v-clipboard:copy="publicRoute"
+                    @click="onPublicLinkCopied()"
+                    flat
+                  >
                     {{publicRoute}}
                   </v-btn>
                 </v-flex>
@@ -76,7 +81,7 @@
                   <v-btn
                     class="copy-link-btn"
                     v-clipboard:copy="publicRoute"
-                    @click="showDialog = false"
+                    @click="onPublicLinkCopied()"
                     flat
                     color="primary"
                   >
@@ -160,6 +165,13 @@ export default {
           this.state = states.LOADED;
         })
         .catch(() => (this.state = states.ERROR));
+    },
+
+    onPublicLinkCopied() {
+      this.showDialog = false;
+      this.$store.dispatch("ui/displaySnackbar", {
+        message: this.$t("Link has been copied in your clipboard")
+      });
     }
   }
 };
