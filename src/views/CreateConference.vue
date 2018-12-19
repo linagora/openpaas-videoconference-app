@@ -39,7 +39,10 @@ export default {
     return {
       valid: true,
       conferenceName: null,
-      conferenceNameRules: [v => !!v || this.$t("A conference name is required")]
+      conferenceNameRules: [
+        v => !!v || this.$t("A conference name is required"),
+        v => v.match(/^\S+$/) || this.$t("Whitespaces are not allowed")
+      ]
     };
   },
   methods: {
