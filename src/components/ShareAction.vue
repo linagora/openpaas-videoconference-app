@@ -68,13 +68,13 @@
                   <v-icon left color="black">link</v-icon>
                 </v-flex>
                 <v-flex class="url hidden-xs-and-down px-0" d-flex>
-                  <v-btn class="url-link-btn ma-0 pa-0" v-clipboard:copy="publicRoute" @click="showDialog = false" flat>
+                  <v-btn class="url-link-btn" v-clipboard:copy="publicRoute" @click="showDialog = false" flat>
                     {{publicRoute}}
                   </v-btn>
                 </v-flex>
                 <v-flex d-flex>
                   <v-btn
-                    class="copy-link-btn ma-0 pa-0"
+                    class="copy-link-btn"
                     v-clipboard:copy="publicRoute"
                     @click="showDialog = false"
                     flat
