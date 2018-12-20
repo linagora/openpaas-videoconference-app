@@ -149,7 +149,9 @@ export default {
         params: { publicId: this.publicId }
       });
 
-      return `${window.location.origin}${route.fullPath}`;
+      const path = `/${this.$router.options.base}/${route.fullPath}`.replace(/\/+/g, "/");
+
+      return `${window.location.origin}${path}`;
     }
   },
   beforeMount() {
