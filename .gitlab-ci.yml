@@ -65,7 +65,7 @@ deploy_dev:
     - rm -fr /srv/vue-apps/${CI_PROJECT_NAME}/*
     - cp -fr /srv/${CI_PROJECT_NAME}/dist/* /srv/vue-apps/${CI_PROJECT_NAME}/
 
-docker_build:
+.docker_build:
   stage: docker_build
   tags:
     - docker
