@@ -45,3 +45,9 @@ docker build -t linagora/openpaas-videoconference-app .
 ```
 docker run -it -p 8888:80 --rm --name openpaas-videoconference-app linagora/openpaas-videoconference-app
 ```
+
+In order to define the OpenPaaS endpoint to use (override the `VUE_APP_OPENPAAS_URL` variable from `.env*` files), the `public/env/openpaas.js` file has to be updated. In order to do this, a Docker volume is available in the container and the `openpaas.js` file can be redefined by mounting a volume. By using this, the image is generated once, and can be used in multiple application deployments.
+
+```
+docker run -it -p 8888:80 --rm --name openpaas-videoconference-app -v $PWD/.config/env:/usr/share/nginx/html/env linagora/openpaas-videoconference-app
+```
