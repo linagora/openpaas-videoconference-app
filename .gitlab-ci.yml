@@ -61,7 +61,7 @@ deploy_dev:
     - npm install
     - npm update
     - git checkout -- .
-    - npm run build
+    - BASE_URL=/videoconf/ npm run build
     - rm -fr /srv/vue-apps/${CI_PROJECT_NAME}/*
     - cp -fr /srv/${CI_PROJECT_NAME}/dist/* /srv/vue-apps/${CI_PROJECT_NAME}/
 
