@@ -1,18 +1,14 @@
 <template>
   <v-app id="openpaas">
-    <!-- Toolbar -->
     <v-toolbar clipped-left app fixed color="primary">
       <v-toolbar-title>
         <img id="header-logo" src="@/assets/logo.svg" alt="OpenPaas logo"/>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <op-actions-menu/>
-
-      <!-- User menu always at the end -->
       <op-user-menu v-if="$auth.check()"/>
     </v-toolbar>
 
-    <!-- Page content -->
     <template v-if="$auth.ready()">
       <v-content>
         <v-container fluid fill-height pa-0>
@@ -23,7 +19,13 @@
       </v-content>
     </template>
     <template v-else>
-      <v-progress-circular indeterminate :size="50" color="primary"></v-progress-circular>
+      <v-content>
+        <v-container fluid fill-height pa-0>
+          <v-layout justify-center align-center>
+            <v-progress-circular indeterminate :size="50" color="primary"></v-progress-circular>
+          </v-layout>
+        </v-container>
+      </v-content>
     </template>
     <op-snackbar/>
   </v-app>

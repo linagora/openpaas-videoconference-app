@@ -1,9 +1,11 @@
 <template>
-  <!-- Don't show the share link if this is not a conference (just for security matters) -->
-  <div class="share-action text-xs-center">
-    <button @click.prevent.stop="generatePublicConference">
-      {{$t('Share conference')}}
-    </button>
+  <v-list-tile class="share-action" @click.prevent="generatePublicConference">
+    <v-list-tile-action>
+      <v-icon>share</v-icon>
+    </v-list-tile-action>
+    <v-list-tile-content>
+      <v-list-tile-title>{{$t('Share conference')}}</v-list-tile-title>
+    </v-list-tile-content>
 
     <v-dialog content-class="share-conference-modal" v-model="showDialog" lazy width="600">
       <v-card id="conference-modal">
@@ -21,9 +23,7 @@
               </v-card-text>
             </v-layout>
           </v-container>
-
         </template>
-
 
         <!-- Modal content when state is error -->
         <template v-else-if="showError">
@@ -68,15 +68,20 @@
                   <v-icon left color="black">link</v-icon>
                 </v-flex>
                 <v-flex class="url hidden-xs-and-down px-0" d-flex>
-                  <v-btn class="url-link-btn ma-0 pa-0" v-clipboard:copy="publicRoute" @click="showDialog = false" flat>
+                  <v-btn
+                    class="url-link-btn"
+                    v-clipboard:copy="publicRoute"
+                    @click="onPublicLinkCopied()"
+                    flat
+                  >
                     {{publicRoute}}
                   </v-btn>
                 </v-flex>
                 <v-flex d-flex>
                   <v-btn
-                    class="copy-link-btn ma-0 pa-0"
+                    class="copy-link-btn"
                     v-clipboard:copy="publicRoute"
-                    @click="showDialog = false"
+                    @click="onPublicLinkCopied()"
                     flat
                     color="primary"
                   >
@@ -91,7 +96,7 @@
 
       </v-card>
     </v-dialog>
-  </div>
+  </v-list-tile>
 </template>
 
 <script>
@@ -160,6 +165,13 @@ export default {
           this.state = states.LOADED;
         })
         .catch(() => (this.state = states.ERROR));
+    },
+
+    onPublicLinkCopied() {
+      this.showDialog = false;
+      this.$store.dispatch("ui/displaySnackbar", {
+        message: this.$t("Link has been copied in your clipboard")
+      });
     }
   }
 };

@@ -12,6 +12,7 @@
   "Retry": "Réessayer",
   "Login": "Đăng nhập",
   "Logout": "Đăng xuất",
+  "E-mail": "E-mail",
   "Password": "Mật khẩu",
   "Reopen conference room": "Mở lại phòng hội nghị",
   "Share conference": "Chia sẻ hội nghị",
@@ -19,5 +20,7 @@
   "Please wait...": "Vui lòng đợi...",
   "Error": "Lỗi",
   "We have not been able to generate your public conference": "Chúng tôi không thể tạo phòng hội nghị công khai của bạn",
-  "Retry": "Thử lại"
+  "Retry": "Thử lại",
+  "Link has been copied in your clipboard": "Liên kết đã được sao chép trong clipboard của bạn",
+  "Whitespaces are not allowed": "Không được phép có khoảng trắng"
 }
