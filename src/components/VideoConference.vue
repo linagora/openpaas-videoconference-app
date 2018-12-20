@@ -110,7 +110,7 @@ export default {
       this.startCountdown();
 
       this.videoConference = new JitsiMeetExternalAPI(this.safeJitsiInstanceUrl, this.jitsiOptions);
-      //this.videoConference.on("videoConferenceJoined", this.onVideoConferenceJoined);
+      this.videoConference.on("videoConferenceJoined", this.onVideoConferenceJoined);
       this.videoConference.on("readyToClose", () => {
         this.dispose();
         this.conferenceState = conferenceStates.CALL_ENDED;
