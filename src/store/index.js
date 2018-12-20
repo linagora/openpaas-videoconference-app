@@ -8,7 +8,7 @@ import plugins from "./plugins";
 import session from "./modules/session";
 import ui from "./modules/ui";
 import user from "./modules/user";
-import applicationConfiguration from "./modules/applicationConfiguration";
+import applicationConfiguration from "./modules/application-configuration";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
