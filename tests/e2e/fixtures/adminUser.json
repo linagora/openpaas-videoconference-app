@@ -62,7 +62,6 @@
             "value": {
               "header:user-notification": true,
               "control-center:password": true,
-              "control-center:appstore": false,
               "application-menu:invitation": false,
               "application-menu:jobqueue": false
             }

@@ -20,7 +20,6 @@ describe("configurationRecursiveSearch", () => {
             "control-center:invitation": false,
             "control-center:members": false,
             "control-center:password": true,
-            "control-center:appstore": false,
             "application-menu:invitation": false,
             "application-menu:members": false,
             "application-menu:jobqueue": false
