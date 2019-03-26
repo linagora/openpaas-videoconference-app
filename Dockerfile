@@ -1,5 +1,6 @@
 # Build stage
 FROM node:10.13.0-alpine as build-stage
+RUN apk --no-cache add git
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
