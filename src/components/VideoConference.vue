@@ -20,6 +20,7 @@
 import { stripProtocol } from "@/lib/helpers";
 import { mapGetters, mapState } from "vuex";
 import { conferenceStates, types } from "@/store/modules/ui";
+import ApplicationSettings from "@/settings";
 import getJitsiMeetExternalAPI from "@/lib/jitsi-meet-external-api-wrapper";
 import { OPLoading } from "vue-openpaas-components";
 import _partial from "lodash/partial";
@@ -56,6 +57,7 @@ export default {
         roomName: this.roomName,
         parentNode: this.$refs.jitsivideo,
         configOverwrite: { enableClosePage: false },
+        noSSL: ApplicationSettings.VUE_APP_JITSI_NO_SSL,
         interfaceConfigOverwrite: {
           SHOW_JITSI_WATERMARK: false,
           SHOW_BRAND_WATERMARK: false,

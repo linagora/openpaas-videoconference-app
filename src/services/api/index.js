@@ -2,15 +2,19 @@ import Axios from "axios";
 import store from "@/store";
 import functions from "./videoconference-api";
 
-const defaults = {
-  baseURL: store.state.applicationConfiguration.baseUrl
-};
+class Api {
+  constructor(config = {}) {
+    this.client = Axios.create(config);
 
-function Api(config) {
-  const instance = Axios.create(Object.assign({}, defaults, config));
-  Object.assign(instance, functions);
-  return instance;
+    Object.assign(this.client, functions);
+
+    this.client.defaults.baseURL = config.baseURL;
+    this.client.interceptors.request.use(config => {
+      config.headers.Authorization = `Bearer ${store.state.session.jwtToken}`;
+
+      return config;
+    });
+  }
 }
 
 export { Api };
-export default new Api();

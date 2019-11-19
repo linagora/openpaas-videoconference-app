@@ -7,7 +7,7 @@
             <v-toolbar-title class="white--text">{{$t('OpenPaaS Login')}}</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <v-form class="login-form" @keydown.native.enter="login">
+            <v-form class="login-form" data-test="login-form" @keydown.native.enter="login">
               <v-text-field
                 class="login-user-input"
                 prepend-icon="person"

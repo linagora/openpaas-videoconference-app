@@ -21,5 +21,7 @@
   "We have not been able to generate your public conference": "Нам не удалось создать вашу публичную конференцию",
   "Retry": "Повторить",
   "Link has been copied in your clipboard": "Ссылка была скопирована в ваш буфер обмена",
-  "Whitespaces are not allowed": "Пробелы не допускаются"
+  "Whitespaces are not allowed": "Пробелы не допускаются",
+  "You are not connected to OpenPaaS": "Вы не подключены к OpenPaaS",
+  "Connect": "соединять"
 }

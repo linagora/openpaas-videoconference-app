@@ -3,4 +3,8 @@ import { applicationInit, getApplication } from "@/application-init";
 
 import "@/main.styl";
 
-window.Application = getApplication(applicationInit(Vue));
+(async () => {
+  const VueInstance = await applicationInit(Vue);
+
+  window.Application = getApplication(VueInstance);
+})();

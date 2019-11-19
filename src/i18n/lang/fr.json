@@ -21,5 +21,7 @@
   "We have not been able to generate your public conference": "Nous n'avons pas pu générer une conference publique",
   "Retry": "Réessayer",
   "Link has been copied in your clipboard": "Le lien a été copié dans le presse-papiers",
-  "Whitespaces are not allowed": "Les espaces ne sont pas autorisés"
+  "Whitespaces are not allowed": "Les espaces ne sont pas autorisés",
+  "You are not connected to OpenPaaS": "Vous n'êtes pas connecté à OpenPaaS",
+  "Connect": "Se connecter"
 }
