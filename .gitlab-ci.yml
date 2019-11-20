@@ -15,7 +15,7 @@ lint:
   image: node:10
   script:
    - npm install
-   - NODE_ENV=production npm run lint -- --no-fix
+   - npm run lint -- --no-fix
 
 test_unit:
   stage: test
