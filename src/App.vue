@@ -2,18 +2,18 @@
   <v-app id="openpaas">
     <v-toolbar clipped-left app fixed color="primary">
       <v-toolbar-title>
-        <img id="header-logo" src="@/assets/logo.svg" alt="OpenPaas logo"/>
+        <img id="header-logo" src="@/assets/logo.svg" alt="OpenPaas logo" />
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <op-actions-menu/>
-      <op-user-menu v-if="$auth.check()"/>
+      <op-actions-menu />
+      <op-user-menu v-if="$auth.check()" />
     </v-toolbar>
 
     <template v-if="$auth.ready()">
       <v-content>
         <v-container fluid fill-height pa-0>
           <v-layout justify-center align-center>
-            <router-view/>
+            <router-view />
           </v-layout>
         </v-container>
       </v-content>
@@ -27,7 +27,7 @@
         </v-container>
       </v-content>
     </template>
-    <op-snackbar/>
+    <op-snackbar />
   </v-app>
 </template>
 
@@ -52,8 +52,7 @@ export default {
 </script>
 
 <style lang="stylus">
-  #header-logo
-    height: 35px;
-    width: 150px;
-
+#header-logo
+  height: 35px;
+  width: 150px;
 </style>

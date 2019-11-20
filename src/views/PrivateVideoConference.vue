@@ -1,5 +1,5 @@
 <template>
-    <component :is="component" v-bind="videoConferenceProps"></component>
+  <component :is="component" v-bind="videoConferenceProps"></component>
 </template>
 
 <script>

@@ -4,16 +4,15 @@
       <v-icon>share</v-icon>
     </v-list-tile-action>
     <v-list-tile-content>
-      <v-list-tile-title>{{$t('Share conference')}}</v-list-tile-title>
+      <v-list-tile-title>{{ $t("Share conference") }}</v-list-tile-title>
     </v-list-tile-content>
 
     <v-dialog content-class="share-conference-modal" v-model="showDialog" lazy width="600">
       <v-card id="conference-modal">
-
         <!-- Modal content when state is loading -->
         <template v-if="showLoading">
           <v-card-title class="white--text headline grey darken-2 justify-center">
-            {{$t('Please wait...')}}
+            {{ $t("Please wait...") }}
           </v-card-title>
 
           <v-container grid-list-xl fluid>
@@ -28,7 +27,7 @@
         <!-- Modal content when state is error -->
         <template v-else-if="showError">
           <v-card-title class="white--text headline error justify-center">
-            {{$t('Error')}}
+            {{ $t("Error") }}
           </v-card-title>
           <v-card-text>
             <v-container grid-list-xl fluid d-inline-flex>
@@ -38,7 +37,7 @@
                 </v-flex>
                 <v-flex class="flex-grow-0" d-inline-flex align-self-center>
                   <p class="conference-error-message text-xs-center pa-0 ma-0">
-                    {{$t('We have not been able to generate your public conference')}}
+                    {{ $t("We have not been able to generate your public conference") }}
                   </p>
                 </v-flex>
               </v-layout>
@@ -50,7 +49,7 @@
           <v-card-actions>
             <v-container grid-list-xl fluid>
               <v-layout align-center justify-center column fill-height>
-                <v-btn @click.prevent.stop="generatePublicConference">{{$t('Retry')}}</v-btn>
+                <v-btn @click.prevent.stop="generatePublicConference">{{ $t("Retry") }}</v-btn>
               </v-layout>
             </v-container>
           </v-card-actions>
@@ -59,7 +58,7 @@
         <!-- Modal content when state is loaded -->
         <template v-else>
           <v-card-title class="white--text headline grey darken-2 justify-center">
-            {{$t('Share conference')}}
+            {{ $t("Share conference") }}
           </v-card-title>
           <v-card-actions>
             <v-container grid-list-xl fluid>
@@ -68,13 +67,8 @@
                   <v-icon left color="black">link</v-icon>
                 </v-flex>
                 <v-flex class="url hidden-xs-and-down px-0" d-flex>
-                  <v-btn
-                    class="url-link-btn"
-                    v-clipboard:copy="publicRoute"
-                    @click="onPublicLinkCopied()"
-                    flat
-                  >
-                    {{publicRoute}}
+                  <v-btn class="url-link-btn" v-clipboard:copy="publicRoute" @click="onPublicLinkCopied()" flat>
+                    {{ publicRoute }}
                   </v-btn>
                 </v-flex>
                 <v-flex d-flex>
@@ -85,7 +79,7 @@
                     flat
                     color="primary"
                   >
-                    {{$t('Copy link')}}
+                    {{ $t("Copy link") }}
                   </v-btn>
                 </v-flex>
               </v-layout>
@@ -93,7 +87,6 @@
             </v-container>
           </v-card-actions>
         </template>
-
       </v-card>
     </v-dialog>
   </v-list-tile>
@@ -180,21 +173,21 @@ export default {
 </script>
 
 <style lang="stylus">
-  #conference-modal // Setting ID because scoped styles do not behave correctly with slots
+#conference-modal // Setting ID because scoped styles do not behave correctly with slots
 
-    .url
-      flex-shrink: 2
+  .url
+    flex-shrink: 2
 
-      &, *
-        text-transform: none
-        justify-content: end
-        overflow: hidden
-        // `text-overflow: ellipsis` won't work is you don't specify width in *pixels*
-        // % won't work... Who knows why !? *sigh* CSS...
-        width: calc(100% - 0px)
-        // Oh, yes, and display must be set to block because everybody uses flexboxes now
-        // and it's really to easy to make something that just works...
-        // See https://stackoverflow.com/a/17783233
-        display: block
-        text-overflow: ellipsis
+    &, *
+      text-transform: none
+      justify-content: end
+      overflow: hidden
+      // `text-overflow: ellipsis` won't work is you don't specify width in *pixels*
+      // % won't work... Who knows why !? *sigh* CSS...
+      width: calc(100% - 0px)
+      // Oh, yes, and display must be set to block because everybody uses flexboxes now
+      // and it's really to easy to make something that just works...
+      // See https://stackoverflow.com/a/17783233
+      display: block
+      text-overflow: ellipsis
 </style>

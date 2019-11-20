@@ -1,7 +1,7 @@
 <template>
   <div id="error">
     <v-icon size="70" color="red">error</v-icon>
-    <span class="headline grey--text text--darken-1 mt-3">{{$t("There was an error while authenticating")}}</span>
+    <span class="headline grey--text text--darken-1 mt-3">{{ $t("There was an error while authenticating") }}</span>
   </div>
 </template>
 

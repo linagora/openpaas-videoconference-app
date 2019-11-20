@@ -14,7 +14,7 @@
                 {{ $t("Connect") }}
               </v-btn>
             </v-card-actions>
-            </v-card>
+          </v-card>
         </v-flex>
       </v-layout>
     </v-container>

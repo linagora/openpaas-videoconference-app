@@ -3,15 +3,15 @@
     <op-loading :waiting-text="waitingText" v-show="showLoader"></op-loading>
     <div id="jitsi" v-show="showConference" ref="jitsivideo"></div>
     <div v-show="showReopenRoomButton">
-      <v-btn color="info" @click="openConference">{{$t("Reopen conference room")}}</v-btn>
+      <v-btn color="info" @click="openConference">{{ $t("Reopen conference room") }}</v-btn>
     </div>
     <div class="text-xs-center" v-show="showErrorMessage">
       <v-icon class="mb-3" color="error" x-large>error</v-icon>
       <p class="title pa-3">
-        {{$t("We are sorry, but the conference room couldn't be joined.")}}<br />
-        {{$t("Please try again later. If the problem persists, try to contact the IT service")}}<br />
+        {{ $t("We are sorry, but the conference room couldn't be joined.") }}<br />
+        {{ $t("Please try again later. If the problem persists, try to contact the IT service") }}<br />
       </p>
-      <v-btn color="info" @click="openConference">{{$t("Retry")}}</v-btn>
+      <v-btn color="info" @click="openConference">{{ $t("Retry") }}</v-btn>
     </div>
   </div>
 </template>
@@ -143,20 +143,20 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  #video {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+#video {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
+#jitsi {
+  width: 100%
+  height: calc(100vh - 64px)
+}
+
+@media only screen and (max-width: 959px) {
   #jitsi {
-    width: 100%
-    height: calc(100vh - 64px)
+    height: calc(100vh - 48px)
   }
-
-  @media only screen and (max-width: 959px) {
-    #jitsi {
-      height: calc(100vh - 48px)
-    }
-  }
+}
 </style>
