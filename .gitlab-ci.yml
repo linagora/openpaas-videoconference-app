@@ -36,10 +36,10 @@ test_e2e:
     - docker
   environment:
     name: production
-  image: cypress/base:10
+  image: cypress/browsers:node12.4.0-chrome76
   script:
    - npm install
-   - npm run test:e2e -- --headless
+   - npm run test:e2e -- --headless -b chrome
 
 deploy_dev:
   stage: deploy_dev
