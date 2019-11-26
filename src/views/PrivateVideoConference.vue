@@ -23,9 +23,9 @@ export default {
   computed: {
     ...mapGetters("user", ["getDisplayName", "getAvatarUrl", "getEmail", "configurations"]),
     ...mapGetters("session", { sessionReady: "ready" }),
-    ...mapState("applicationConfiguration", ["jitsiToolbarButtons"]),
+    ...mapState("applicationConfiguration", ["jitsiToolbarButtons", "jitsiUrl"]),
     jitsiInstanceUrl() {
-      return this.configurations("linagora.esn.videoconference:jitsiInstanceUrl");
+      return this.jitsiUrl;
     },
     videoConferenceProps() {
       return this.component === "op-loading"

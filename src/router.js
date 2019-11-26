@@ -27,7 +27,7 @@ export default new Router({
         params: { conferenceName: process.env.VUE_APP_JITSI_DEFAULT_CONFERENCE_ROOM }
       },
       meta: {
-        auth: true
+        auth: false
       }
     },
     {
@@ -43,7 +43,7 @@ export default new Router({
       name: routeNames.CREATE_CONFERENCE,
       component: CreateConference,
       meta: {
-        auth: true
+        auth: false
       }
     },
     {
@@ -52,7 +52,7 @@ export default new Router({
       component: PrivateVideoConference,
       props: route => ({ conferenceName: route.params.conferenceName }),
       meta: {
-        auth: true
+        auth: false
       }
     },
     {

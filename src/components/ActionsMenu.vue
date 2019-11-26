@@ -22,7 +22,7 @@ export default {
       return this.$route.params.conferenceName;
     },
     showMenu() {
-      return this.conferenceName; // Add other menu conditions here
+      return false; // Add other menu conditions here
     }
   }
 };
