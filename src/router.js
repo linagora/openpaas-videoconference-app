@@ -23,7 +23,7 @@ export default new Router({
       path: "/",
       name: routeNames.HOME,
       redirect: {
-        name: routeNames.PRIVATE_VIDEOCONFERENCE,
+        name: routeNames.CREATE_CONFERENCE,
         params: { conferenceName: process.env.VUE_APP_JITSI_DEFAULT_CONFERENCE_ROOM }
       },
       meta: {
