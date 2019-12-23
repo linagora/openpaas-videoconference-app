@@ -43,8 +43,8 @@ export default {
     "op-actions-menu": ActionsMenu
   },
   created() {
+    this.$store.dispatch("session/init");
     this.$auth.ready(() => {
-      this.$store.dispatch("session/init");
       this.$store.dispatch("user/fetchUser");
     });
   }
