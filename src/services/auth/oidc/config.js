@@ -6,7 +6,8 @@ const DEFAULTS = Object.freeze({
   redirectUri: "http://localhost:8081/oidc/callback",
   postLogoutRedirectUri: "http://localhost:8081/login",
   responseType: "id_token token",
-  scope: "openid email profile"
+  scope: "openid email profile",
+  monitorSession: false
 });
 
 const config = Object.assign({}, { ...DEFAULTS, ...ApplicationSettings.oidc });
