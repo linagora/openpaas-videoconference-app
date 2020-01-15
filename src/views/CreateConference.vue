@@ -4,10 +4,10 @@
       <v-flex xs12 sm8 md4>
         <v-card class="elevation-12">
           <v-toolbar color="primary">
-            <v-toolbar-title class="white--text">{{$t('Create a new conference')}}</v-toolbar-title>
+            <v-toolbar-title class="white--text">{{ $t("Create a new conference") }}</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <v-form ref="form" v-model="valid" @keydown.native.enter="submit"  onSubmit="return false;">
+            <v-form ref="form" v-model="valid" @keydown.native.enter="submit" onSubmit="return false;">
               <v-text-field
                 v-model="conferenceName"
                 :rules="conferenceNameRules"
@@ -20,10 +20,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-              <v-btn
-                :disabled="!valid"
-                @click="submit"
-              >{{$t('Create')}}</v-btn>
+            <v-btn :disabled="!valid" @click="submit">{{ $t("Create") }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>

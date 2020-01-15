@@ -4,14 +4,13 @@ import i18n from "@/i18n";
 import store from "@/store";
 import VideoConference from "@/components/VideoConference";
 
-const localVue = createLocalVue();
-
 describe("The VideoConference component", () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
 
   test("startCountdown", async function() {
+    const localVue = await createLocalVue();
     const target = shallowMount(VideoConference, {
       localVue,
       store,

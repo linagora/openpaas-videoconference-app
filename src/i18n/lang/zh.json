@@ -21,5 +21,7 @@
   "We are generating a public conference": "正在生成公共会议",
   "We are sorry, but the conference room couldn't be joined.": "很抱歉，无法加入会议房间。",
   "We have not been able to generate your public conference": "我们无法生成您的公共会议",
-  "Whitespaces are not allowed": "不能有空格"
+  "Whitespaces are not allowed": "不能有空格",
+  "You are not connected to OpenPaaS": "您未连接到OpenPaaS",
+  "Connect": "连"
 }

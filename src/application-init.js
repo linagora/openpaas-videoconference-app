@@ -1,7 +1,6 @@
 import VueAxios from "vue-axios";
 import Vuetify from "vuetify";
 import colors from "vuetify/es5/util/colors";
-import VueAuth from "@websanova/vue-auth";
 import VueClipboard from "vue-clipboard2";
 import i18n from "@/i18n";
 import OpenPaaS from "vue-openpaas-components";
@@ -9,7 +8,7 @@ import OpenPaaS from "vue-openpaas-components";
 import App from "@/App.vue";
 import router from "@/router";
 import store from "@/store";
-import { api, auth as servicesAuth } from "@/services";
+import { Api, auth as servicesAuth } from "@/services";
 
 const defaultTheme = {
   primary: colors.blue
@@ -17,14 +16,19 @@ const defaultTheme = {
 
 // This prevents polluting the global Axios and Vue instances
 // See for instance : https://github.com/vuetifyjs/vuetify/issues/4068#issuecomment-446988490
-function applicationInit(VueInstance, { axiosInstance = api, auth = servicesAuth, theme = defaultTheme } = {}) {
-  VueInstance.use(OpenPaaS);
-  VueInstance.use(VueAxios, axiosInstance);
+async function applicationInit(VueInstance, { auth = servicesAuth, theme = defaultTheme } = {}) {
+  const api = new Api({
+    baseURL: store.state.applicationConfiguration.baseUrl
+  });
+
+  VueInstance.use(OpenPaaS, { api });
+  VueInstance.use(VueAxios, api.client);
 
   VueInstance.router = router;
-  VueInstance.use(VueAuth, auth);
   VueInstance.use(Vuetify, { theme });
   VueInstance.use(VueClipboard);
+
+  await auth.init(VueInstance);
 
   VueInstance.config.productionTip = false;
 

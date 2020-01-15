@@ -22,5 +22,7 @@
   "We have not been able to generate your public conference": "Chúng tôi không thể tạo phòng hội nghị công khai của bạn",
   "Retry": "Thử lại",
   "Link has been copied in your clipboard": "Liên kết đã được sao chép trong clipboard của bạn",
-  "Whitespaces are not allowed": "Không được phép có khoảng trắng"
+  "Whitespaces are not allowed": "Không được phép có khoảng trắng",
+  "You are not connected to OpenPaaS": "Bạn chưa được kết nối với OpenPaaS",
+  "Connect": "Kết nối"
 }

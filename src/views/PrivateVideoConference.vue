@@ -1,5 +1,5 @@
 <template>
-    <component :is="component" v-bind="videoConferenceProps"></component>
+  <component :is="component" v-bind="videoConferenceProps"></component>
 </template>
 
 <script>
@@ -24,14 +24,11 @@ export default {
     ...mapGetters("user", ["getDisplayName", "getAvatarUrl", "getEmail", "configurations"]),
     ...mapGetters("session", { sessionReady: "ready" }),
     ...mapState("applicationConfiguration", ["jitsiToolbarButtons"]),
-    jitsiInstanceUrl() {
-      return this.configurations("linagora.esn.videoconference:jitsiInstanceUrl");
-    },
     videoConferenceProps() {
       return this.component === "op-loading"
         ? { waitingText: "Loading conference..." }
         : {
-            jitsiInstanceUrl: this.jitsiInstanceUrl,
+            jitsiInstanceUrl: this.configurations("linagora.esn.videoconference:jitsiInstanceUrl"),
             roomName: this.conferenceName,
             userName: this.getDisplayName,
             userAvatarUrl: this.getAvatarUrl,

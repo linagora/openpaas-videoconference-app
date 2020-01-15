@@ -9,6 +9,7 @@ RUN npm run build
 
 # Production stage
 FROM nginx:1.13.12-alpine as production-stage
+COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 VOLUME ["/usr/share/nginx/html/env"]
 EXPOSE 80

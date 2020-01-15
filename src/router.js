@@ -1,9 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Login from "@/views/Login.vue";
 import PrivateVideoConference from "@/views/PrivateVideoConference";
 import PublicVideoConference from "@/views/PublicVideoConference";
 import CreateConference from "@/views/CreateConference.vue";
+import ApplicationSettings from "@/settings";
 
 Vue.use(Router);
 
@@ -14,6 +14,8 @@ const routeNames = Object.freeze({
   PUBLIC_VIDEOCONFERENCE: "PublicVideoConference",
   CREATE_CONFERENCE: "CreateConference"
 });
+
+const LoginView = (auth = "basic") => import(`@/views/login/${auth}/Login.vue`);
 
 export default new Router({
   base: process.env.BASE_URL, // Needed for dev/build and HTML history
@@ -33,7 +35,7 @@ export default new Router({
     {
       path: "/login",
       name: routeNames.LOGIN,
-      component: Login,
+      component: () => LoginView(ApplicationSettings.VUE_APP_AUTH),
       meta: {
         auth: false
       }

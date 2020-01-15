@@ -1,15 +1,11 @@
-import jwt from "./jwt";
+import ApplicationSettings from "../../settings";
 
-export default {
-  auth: jwt,
-  http: require("@websanova/vue-auth/drivers/http/axios.1.x"),
-  router: require("@websanova/vue-auth/drivers/router/vue-router.2.x"),
-  refreshData: {
-    enabled: false
-  },
-  fetchData: {
-    url: "api/user",
-    method: "GET",
-    enabled: true
-  }
-};
+const getAuth = (auth = "basic") => import(`./${auth}`);
+
+async function init(Vue) {
+  const auth = await getAuth(ApplicationSettings.VUE_APP_AUTH);
+
+  auth.init(Vue);
+}
+
+export default { init };
