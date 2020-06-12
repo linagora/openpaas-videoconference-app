@@ -14,7 +14,7 @@ export default {
   },
   created() {
     this.oidcSignInCallback()
-      .then(() => this.$router.push("/"))
+      .then(redirectPath => this.$router.push(redirectPath))
       .catch(err => {
         console.log("Error on auth callback", err);
         this.$router.push("/oidc/error");

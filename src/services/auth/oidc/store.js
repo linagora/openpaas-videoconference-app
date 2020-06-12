@@ -14,7 +14,10 @@ function configure() {
       {
         namespaced: true,
         dispatchEventsOnWindow: true,
-        isPublicRoute
+        isPublicRoute,
+        defaultSigninRedirectOptions: {
+          useReplaceToNavigate: true
+        }
       },
       {
         userLoaded: user => {
