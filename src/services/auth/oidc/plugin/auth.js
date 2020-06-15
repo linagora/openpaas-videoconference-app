@@ -25,5 +25,6 @@ export default class Auth {
 
   logout() {
     this.options.store.dispatch("oidcStore/signOutOidc");
+    this.options.store.dispatch("oidcStore/removeOidcUser");
   }
 }

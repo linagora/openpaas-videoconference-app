@@ -21,28 +21,28 @@ function configure() {
       },
       {
         userLoaded: user => {
-          console.log("OIDC user is loaded:", user);
+          console.log("OIDC - User is loaded", user);
           store.dispatch("session/setJWTToken", user.access_token);
           store.dispatch("user/fetchUser");
         },
-        userUnloaded: () => console.log("OIDC user is unloaded"),
-        accessTokenExpiring: () => console.log("Access token will expire"),
+        userUnloaded: () => console.log("OIDC - User is unloaded"),
+        accessTokenExpiring: () => console.log("OIDC - Access token will expire"),
         accessTokenExpired: () => {
-          console.log("Access token expired");
-          forceAuth();
+          console.log("OIDC - Access token expired");
+          forceAuth(true);
         },
-        silentRenewError: () => console.log("OIDC user is unloaded"),
+        silentRenewError: () => console.log("OIDC - Silent renew error"),
         userSignedOut: () => {
-          console.log("User signed out from remote");
-          forceAuth();
+          console.log("OIDC - User signed out from remote");
+          forceAuth(false);
         }
       }
     )
   );
 
-  function forceAuth() {
-    console.log("Forcing auth...");
-    userManager.storeUser();
+  function forceAuth(store) {
+    console.log("OIDC - Forcing auth...", store);
+    store && userManager.storeUser();
 
     router.push("/login");
   }
