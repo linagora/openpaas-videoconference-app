@@ -24,7 +24,9 @@ export default class Auth {
   }
 
   logout() {
-    this.options.store.dispatch("oidcStore/signOutOidc");
+    // order matters. Clean data before signin out (which redirects to OIDC logout)
+    this.options.store.dispatch("session/resetSession");
     this.options.store.dispatch("oidcStore/removeOidcUser");
+    this.options.store.dispatch("oidcStore/signOutOidc");
   }
 }
