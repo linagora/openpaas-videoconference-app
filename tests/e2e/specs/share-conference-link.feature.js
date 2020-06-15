@@ -1,4 +1,4 @@
-describe("The conference sharing feature", () => {
+describe.skip("The conference sharing feature", () => {
   describe("When I am not on a private conference page", () => {
     it("I should not see a 'share video conference link'", () => {
       cy.login({ redirectPath: "/o/5123524a-5bff-454d-8a6c-8356faedc723" });

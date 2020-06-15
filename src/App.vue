@@ -5,7 +5,7 @@
         <img id="header-logo" src="@/assets/logo.svg" alt="OpenPaas logo" />
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <op-actions-menu />
+      <op-actions-menu v-if="showAppMenu" />
       <op-user-menu v-if="$auth.check()" />
     </v-toolbar>
 
@@ -37,6 +37,9 @@ import Snackbar from "@/components/Snackbar.vue";
 import ActionsMenu from "@/components/ActionsMenu.vue";
 
 export default {
+  data: () => ({
+    showAppMenu: false
+  }),
   components: {
     "op-user-menu": UserMenu,
     "op-snackbar": Snackbar,
