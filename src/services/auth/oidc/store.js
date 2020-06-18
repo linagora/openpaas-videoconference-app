@@ -29,7 +29,6 @@ function configure() {
         accessTokenExpiring: () => console.log("OIDC - Access token will expire"),
         accessTokenExpired: () => {
           console.log("OIDC - Access token expired");
-          forceAuth(true);
         },
         silentRenewError: () => console.log("OIDC - Silent renew error"),
         userSignedOut: () => {
