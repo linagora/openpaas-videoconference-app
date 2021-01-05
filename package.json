@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@websanova/vue-auth": "^2.21.14-beta",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "lodash": "^4.17.15",
     "oidc-client": "^1.9.1",
     "vue": "^2.5.17",
